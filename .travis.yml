@@ -42,7 +42,7 @@ before_cache:
   - sudo chown $USER. $HOME/lxc/cache.tar
 
 env:
-  - LXC_NAME=docker LXC_DISTRO=ubuntu LXC_RELEASE=18.04
+  - LXC_NAME=ubuntu18 LXC_DISTRO=ubuntu LXC_RELEASE=18.04
 
 before_install:
   - test "${LXC_NAME}" != "docker" && sudo modprobe wireguard || docker build -t travis/algo .

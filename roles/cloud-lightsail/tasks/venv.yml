@@ -1,0 +1,13 @@
+---
+- name: Clean up the environment
+  file:
+    dest: "{{ lightsail_venv }}"
+    state: absent
+  when: clean_environment
+
+- name: Install requirements
+  pip:
+    name: apache-libcloud
+    state: latest
+    virtualenv: "{{ lightsail_venv }}"
+    virtualenv_python: python2.7
