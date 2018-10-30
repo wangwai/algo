@@ -37,6 +37,22 @@
       cloud_instance_ip: "{{ algo_instance['instance']['public_ip_address'] }}"
       ansible_ssh_user: ubuntu
 
+  # - block:
+  #   - name: Allocate a static ip
+  #     lightsail_static_ip:
+  #       aws_access_key: "{{ access_key }}"
+  #       aws_secret_key: "{{ secret_key }}"
+  #       name: "{{ algo_server_name }}-ip"
+  #       state: present
+  #       region: "{{ algo_region }}"
+  #       zone: "{{ algo_region }}a"
+  #       instance: "{{ algo_instance['instance']['name'] }}"
+  #     register: lightsail_static_ip
+  #
+  #   - set_fact:
+  #       cloud_instance_ip: "{{ lightsail_static_ip['staticip']['ip_address'] }}"
+  #   when: cloud_providers.lightsail.static_ip
+
   rescue:
   - debug: var=fail_hint
     tags: always
