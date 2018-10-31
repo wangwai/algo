@@ -3,11 +3,12 @@ Address = {{ wireguard_server_ip }}
 ListenPort = {{ wireguard_port }}
 PrivateKey = {{ lookup('file', wireguard_config_path + '/private/' + IP_subject_alt_name) }}
 SaveConfig = false
+Table = off
 
 {% for u in users|sort %}
 
 [Peer]
 # {{ u }}
 PublicKey = {{ lookup('file', wireguard_config_path + '/public/' + u) }}
-AllowedIPs = {{ lookup('file', wireguard_config_path + '/ip/' + u) }}
+AllowedIPs = 0.0.0.0/0, ::/0
 {% endfor %}
