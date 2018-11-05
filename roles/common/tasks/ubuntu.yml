@@ -132,5 +132,4 @@
     state: present
   when: install_headers
   with_items:
-    - linux-headers-generic
-    - "linux-headers-{{ ansible_kernel }}"
+    - raspberrypi-kernel-headers
