@@ -79,7 +79,6 @@
       -config <(cat openssl.cnf <(printf "[basic_exts]\nsubjectAltName={{ subjectAltName }}"))
       -keyout private/{{ IP_subject_alt_name }}.key
       -out reqs/{{ IP_subject_alt_name }}.req -nodes
-      -passin pass:"{{ CA_password }}"
       -subj "/CN={{ IP_subject_alt_name }}" -batch &&
       {{ openssl_bin }} ca -utf8
       -in reqs/{{ IP_subject_alt_name }}.req
@@ -102,7 +101,6 @@
       -config <(cat openssl.cnf <(printf "[basic_exts]\nsubjectAltName={{ subjectAltName_USER }}"))
       -keyout private/{{ item }}.key
       -out reqs/{{ item }}.req -nodes
-      -passin pass:"{{ CA_password }}"
       -subj "/CN={{ item }}" -batch &&
       {{ openssl_bin }} ca -utf8
       -in reqs/{{ item }}.req
