@@ -1,13 +1,4 @@
 ---
-- name: WireGuard repository configured
-  apt_repository:
-    repo: ppa:wireguard/wireguard
-    state: present
-  register: result
-  until: result is succeeded
-  retries: 10
-  delay: 3
-
 - name: WireGuard installed
   apt:
     name: wireguard
